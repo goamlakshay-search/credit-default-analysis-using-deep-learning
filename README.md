@@ -4,3 +4,8 @@ abstract: This project presents a machine learning approach to credit analysis u
 
 # extended version
 well this model provides great output but still we uses other methods like tree based XGBoost to make it more intutive and further used SHAP model explanatory framework to better understand the underlying setup that we are dealing with
+# using XGBoost to this dataset
+using XGBoost our model is not performing well and The model achieves 81.5% accuracy, but this is misleading due to class imbalance. It performs very well on non‑defaults (precision 0.84, recall 0.94), but poorly on defaults (precision 0.63, recall 0.37). Since defaults are critical in risk management, I’d rebalance the dataset, adjust class weights, or tune thresholds to improve recall for defaults while maintaining overall performance, and even after adjusting the threshold and rebalancing dataset we had a further improvement in the recall for the defaulter class (class 1), often with a corresponding change in precision and potentially overall accuracy. The main problems are class imbalance, poor recall for defaults, misleading reliance on accuracy, and limited gains from threshold tuning. The model needs rebalancing, better feature engineering, and alternative evaluation metrics to be truly effective.
+provided that previous alterations made to this models were inefficient and lacks predictability of determining defaulters, so to analyze dive deeper I introduced SHAP To understand how each feature contributes to the model's predictions, we will use SHAP (SHapley Additive exPlanations). SHAP values help us interpret the output of machine learning models by explaining the prediction of an instance by computing the contribution of each feature to the prediction.
+
+

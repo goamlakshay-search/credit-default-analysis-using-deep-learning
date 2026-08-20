@@ -9,9 +9,21 @@ using XGBoost our model is not performing well and The model achieves 81.5% accu
 provided that previous alterations made to this models were inefficient and lacks predictability of determining defaulters, so to analyze dive deeper I introduced SHAP To understand how each feature contributes to the model's predictions, we will use SHAP (SHapley Additive exPlanations). SHAP values help us interpret the output of machine learning models by explaining the prediction of an instance by computing the contribution of each feature to the prediction.
 
 # extended XGBoost version(featuring)
+after analyzing SHAP we
 Feature Engineering: Aggregating Bill/Payment Series and Creating Ratios
 To capture more comprehensive information from the monthly bill and payment statements, we will create new features by:
 
 Aggregating BILL_AMT and PAY_AMT: Calculating the sum and mean of these amounts over the six-month period.
 Creating Utilization Ratios: Dividing aggregated bill amounts by the LIMIT_BAL to understand how much of the credit limit is being used.
 Creating Payment Ratios: Dividing aggregated payment amounts by aggregated bill amounts to assess repayment behavior relative to outstanding bills.
+Correlation Analysis and Feature Selection
+Highly correlated features can introduce redundancy and multicollinearity, potentially affecting model stability and interpretability. We will compute the correlation matrix and remove one of the features from any pair that has a correlation coefficient above a certain threshold (e.g., 0.95).
+Retraining XGBoost with New Features and Regularization
+Now, with the new engineered features and after handling highly correlated columns, we will retrain the XGBoost model. We will re-use the scale_pos_weight for class imbalance and introduce additional regularization parameters to prevent overfitting.
+1. Feature Engineering: Aggregating Bill/Payment Series and Creating Ratios
+To capture more comprehensive information from the monthly bill and payment statements, we will create new features by:
+
+2. Aggregating BILL_AMT and PAY_AMT: Calculating the sum and mean of these amounts over the six-month period.
+Creating Utilization Ratios: Dividing aggregated bill amounts by the LIMIT_BAL to understand how much of the credit limit is being used.
+
+3. Creating Payment Ratios: Dividing aggregated payment amounts by aggregated bill amounts to assess repayment behavior relative to outstanding bills.

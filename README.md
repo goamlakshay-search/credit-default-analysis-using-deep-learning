@@ -27,3 +27,10 @@ To capture more comprehensive information from the monthly bill and payment stat
 Creating Utilization Ratios: Dividing aggregated bill amounts by the LIMIT_BAL to understand how much of the credit limit is being used.
 
 3. Creating Payment Ratios: Dividing aggregated payment amounts by aggregated bill amounts to assess repayment behavior relative to outstanding bills.
+# results 
+results of this extended feature engineered xgboost model:
+You have a good number of True Negatives (correctly predicted no default) and True Positives (correctly predicted default).
+However, there's a noticeable number of False Negatives (actual defaults predicted as no default), confirming the model's struggle to identify all defaulting customers. This is consistent with the lower recall for the 'Default' class.
+There are also False Positives (predicted default, but actual no default), aligning with the lower precision for the 'Default' class.
+Overall Interpretation
+Your model successfully identifies several key drivers of credit default, particularly recent payment statuses and credit limits. However, the performance metrics, especially precision and recall for the 'Default' class, indicate that there's still room for improvement in accurately identifying and predicting defaulting customers. The SHAP analysis supports the observation that the model might be heavily reliant on short-term payment features, but overall recall indicator for default category has increased from 37% to 60% but still indicates the model misses a significant portion (40%) of the customers who will actually default (false negatives
